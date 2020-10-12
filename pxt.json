@@ -1,5 +1,5 @@
 {
-    "name": "sensore_umidità",
+    "name": "orto|automatio",
     "description": "",
     "dependencies": {
         "core": "*",
