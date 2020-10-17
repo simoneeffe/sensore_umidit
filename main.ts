@@ -8,7 +8,7 @@ function controlla_umidita_3 () {
             . # # # .
             # . . . #
             . . . . .
-            # . # . #
+            # # # . .
             `)
     } else if (umidità_3 > 710) {
         basic.showLeds(`
@@ -16,7 +16,7 @@ function controlla_umidita_3 () {
             . # # # .
             . . . . .
             . . . . .
-            # . # . #
+            # # # . .
             `)
     } else {
         basic.showLeds(`
@@ -24,7 +24,7 @@ function controlla_umidita_3 () {
             # # # # #
             . . . . .
             . . . . .
-            # . # . #
+            # # # . .
             `)
     }
     basic.pause(5000)
@@ -72,7 +72,7 @@ function controlla_umidita_2 () {
             . # # # .
             # . . . #
             . . . . .
-            # . # . .
+            # # . . .
             `)
     } else if (umidità_2 > 710) {
         basic.showLeds(`
@@ -80,7 +80,7 @@ function controlla_umidita_2 () {
             . # # # .
             . . . . .
             . . . . .
-            # . # . .
+            # # . . .
             `)
     } else {
         basic.showLeds(`
@@ -88,7 +88,7 @@ function controlla_umidita_2 () {
             # # # # #
             . . . . .
             . . . . .
-            # . # . .
+            # # . . .
             `)
     }
     basic.pause(5000)
@@ -150,15 +150,15 @@ basic.forever(function () {
     basic.pause(1000)
     // SEGNALE POMPA
     if (umidità_1 < 500) {
-        pins.servoWritePin(AnalogPin.P9, 0)
+        pins.servoWritePin(AnalogPin.P13, 0)
         basic.pause(1000)
         AVVIA_POMPA()
     } else if (umidità_2 < 500) {
-        pins.servoWritePin(AnalogPin.P9, 45)
+        pins.servoWritePin(AnalogPin.P13, 80)
         basic.pause(1000)
         AVVIA_POMPA()
     } else if (umidità_3 < 500) {
-        pins.servoWritePin(AnalogPin.P9, 180)
+        pins.servoWritePin(AnalogPin.P13, 160)
         basic.pause(1000)
         AVVIA_POMPA()
     }
