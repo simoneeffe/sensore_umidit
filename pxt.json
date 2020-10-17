@@ -1,5 +1,5 @@
 {
-    "name": "orto_automatico_tre_piante",
+    "name": "orto_3_piante",
     "description": "",
     "dependencies": {
         "core": "*",
