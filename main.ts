@@ -5,26 +5,26 @@ function controlla_umidita_3 () {
     if (umidità_3 < 500) {
         basic.showLeds(`
             . . . . .
-            . # # # .
-            # . . . #
             . . . . .
-            # # # . .
+            . . # . .
+            . . . . .
+            . . . . .
             `)
     } else if (umidità_3 > 710) {
         basic.showLeds(`
-            # . . . #
-            . # # # .
-            . . . . .
-            . . . . .
-            # # # . .
+            # # # # #
+            # . # . #
+            # # # # #
+            # . # . #
+            # # # # #
             `)
     } else {
         basic.showLeds(`
             . . . . .
-            # # # # #
+            . # # # .
+            . # . # .
+            . # # # .
             . . . . .
-            . . . . .
-            # # # . .
             `)
     }
     basic.pause(5000)
@@ -36,27 +36,27 @@ function controlla_umidita_1 () {
     pins.analogWritePin(AnalogPin.P5, 0)
     if (umidità_1 < 500) {
         basic.showLeds(`
+            # # . # #
             . . . . .
             . # # # .
+            # # . # #
             # . . . #
-            . . . . .
-            # . . . .
             `)
     } else if (umidità_1 > 710) {
         basic.showLeds(`
+            # # . # #
+            . . . . .
             # . . . #
+            # # . # #
             . # # # .
-            . . . . .
-            . . . . .
-            # . . . .
             `)
     } else {
         basic.showLeds(`
+            # # . # #
+            . . . . .
             . . . . .
             # # # # #
-            . . . . .
-            . . . . .
-            # . . . .
+            # # # # #
             `)
     }
     basic.pause(5000)
@@ -68,27 +68,27 @@ function controlla_umidita_2 () {
     pins.analogWritePin(AnalogPin.P6, 0)
     if (umidità_2 < 500) {
         basic.showLeds(`
+            # . # . #
             . . . . .
-            . # # # .
-            # . . . #
+            # . . # .
             . . . . .
-            # # . . .
+            . # . . #
             `)
     } else if (umidità_2 > 710) {
         basic.showLeds(`
-            # . . . #
-            . # # # .
+            . # . . .
+            # # # . .
+            . # # # #
+            . . . # #
             . . . . .
-            . . . . .
-            # # . . .
             `)
     } else {
         basic.showLeds(`
-            . . . . .
+            . . # . .
+            # . # . #
             # # # # #
-            . . . . .
-            . . . . .
-            # # . . .
+            . # # # .
+            # # . # #
             `)
     }
     basic.pause(5000)
@@ -112,7 +112,6 @@ function AVVIA_POMPA () {
         # # . . .
         # # # # #
         `)
-    basic.pause(500)
     basic.pause(500)
     basic.showLeds(`
         . . . . .
@@ -153,11 +152,13 @@ basic.forever(function () {
         pins.servoWritePin(AnalogPin.P13, 0)
         basic.pause(1000)
         AVVIA_POMPA()
-    } else if (umidità_2 < 500) {
+    }
+    if (umidità_2 < 500) {
         pins.servoWritePin(AnalogPin.P13, 80)
         basic.pause(1000)
         AVVIA_POMPA()
-    } else if (umidità_3 < 500) {
+    }
+    if (umidità_3 < 500) {
         pins.servoWritePin(AnalogPin.P13, 160)
         basic.pause(1000)
         AVVIA_POMPA()
