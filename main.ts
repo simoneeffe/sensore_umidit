@@ -136,32 +136,27 @@ function AVVIA_POMPA () {
 input.onButtonPressed(Button.B, function () {
     AVVIA_POMPA()
 })
+let umidità_3 = 0
 let umidità_2 = 0
 let umidità_1 = 0
-let umidità_3 = 0
+umidità_1 = 1000
+umidità_2 = 1000
+umidità_3 = 1000
 pins.digitalWritePin(DigitalPin.P8, 0)
+pins.digitalWritePin(DigitalPin.P16, 1)
+basic.pause(500)
+pins.digitalWritePin(DigitalPin.P16, 0)
 basic.forever(function () {
     controlla_umidita_1()
-    umidità_2 = 1000
-    umidità_3 = 1000
 })
 basic.forever(function () {
-    basic.pause(1000)
+    basic.pause(50000)
     // SEGNALE POMPA
-    if (umidità_1 < 500) {
+    if (umidità_1 > 0 && umidità_1 < 500) {
         pins.servoWritePin(AnalogPin.P13, 0)
         basic.pause(1000)
         AVVIA_POMPA()
+    } else if (umidità_1 == 0) {
+        pins.digitalWritePin(DigitalPin.P16, 1)
     }
-    if (umidità_2 < 500) {
-        pins.servoWritePin(AnalogPin.P13, 90)
-        basic.pause(1000)
-        AVVIA_POMPA()
-    }
-    if (umidità_3 < 500) {
-        pins.servoWritePin(AnalogPin.P13, 180)
-        basic.pause(1000)
-        AVVIA_POMPA()
-    }
-    basic.pause(60000)
 })
