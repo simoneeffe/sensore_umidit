@@ -77,8 +77,8 @@ function controlla_umidita_2 () {
     } else if (umidità_2 > 710) {
         basic.showLeds(`
             . # . . .
-            # # # . .
-            . # # # #
+            # # # # .
+            . # . # #
             . . . # #
             . . . . .
             `)
@@ -129,7 +129,7 @@ function AVVIA_POMPA () {
         . . . . .
         # # # # #
         `)
-    basic.pause(2000)
+    basic.pause(5000)
     basic.clearScreen()
     pins.digitalWritePin(DigitalPin.P8, 0)
 }
@@ -142,8 +142,8 @@ let umidità_3 = 0
 pins.digitalWritePin(DigitalPin.P8, 0)
 basic.forever(function () {
     controlla_umidita_1()
-    controlla_umidita_2()
-    controlla_umidita_3()
+    umidità_2 = 1000
+    umidità_3 = 1000
 })
 basic.forever(function () {
     basic.pause(1000)
@@ -154,12 +154,12 @@ basic.forever(function () {
         AVVIA_POMPA()
     }
     if (umidità_2 < 500) {
-        pins.servoWritePin(AnalogPin.P13, 80)
+        pins.servoWritePin(AnalogPin.P13, 90)
         basic.pause(1000)
         AVVIA_POMPA()
     }
     if (umidità_3 < 500) {
-        pins.servoWritePin(AnalogPin.P13, 160)
+        pins.servoWritePin(AnalogPin.P13, 180)
         basic.pause(1000)
         AVVIA_POMPA()
     }
